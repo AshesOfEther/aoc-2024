@@ -1,7 +1,7 @@
-{ lib }: {
+{ lib }: with lib; {
     splitLines = s: let
-        lines = lib.splitString "\n" s;
-        length = lib.length lines;
+        lines = splitString "\n" s;
+        amount = lines;
     in
-        lib.take (length - 1) lines;
+        take (amount - 1) lines;
 }
