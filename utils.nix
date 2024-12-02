@@ -3,7 +3,7 @@
 
     eq = x: y: x == y;
 
-    delta = x: y: abs;
+    delta = x: y: abs (x - y);
 
     greaterThan = x: y: x > y;
 
