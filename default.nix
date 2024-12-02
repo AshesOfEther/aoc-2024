@@ -13,8 +13,13 @@ in
                 utils = utils;
             };
             part = num': let num = toString num'; in {
-                tests = map (test: (invoke test.input)."part${num}" == test."part${num}") day.tests;
+                tests = map (test: let result = (invoke test.input)."part${num}"; in if result == test."part${num}" then true else result) day.tests;
                 result = (invoke (lib.readFile ./${name}/input.txt))."part${num}";
             };
         in { part1 = part 1; part2 = part 2; }))
-    ]
+    ] // {
+        repl = {
+            lib = lib;
+            utils = utils;
+        };
+    }
