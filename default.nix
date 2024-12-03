@@ -13,7 +13,15 @@ in
                 utils = utils;
             };
             part = num': let num = toString num'; in {
-                tests = map (test: let result = (invoke test.input)."part${num}"; in if result == test."part${num}" then true else result) day.tests;
+                tests = map (test:
+                    if # Skip tests that are actively disabled for this part.
+                        test."part${num}" == null
+                    then true
+                    else let
+                        result = (invoke test.input)."part${num}";
+                    in
+                        if result == test."part${num}" then true else result
+                    ) day.tests;
                 result = (invoke (lib.readFile ./${name}/input.txt))."part${num}";
             };
         in { part1 = part 1; part2 = part 2; }))

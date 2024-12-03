@@ -26,4 +26,6 @@
         amount = length lines;
     in
         take (amount - 1) lines;
+    
+    sum = foldl' add 0;
 }
