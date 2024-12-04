@@ -15,6 +15,8 @@
 
     listSum = foldl' add 0;
 
+    oneIf = condition: if condition then 1 else 0;
+
     pipe' = list: initial: pipe initial list;
 
     removeAt = index: list: take index list ++ drop (index + 1) list;
