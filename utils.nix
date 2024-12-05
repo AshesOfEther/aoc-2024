@@ -30,4 +30,6 @@
         take (amount - 1) lines;
     
     sum = foldl' add 0;
+
+    sumMap = f: list: sum (map f list);
 }
